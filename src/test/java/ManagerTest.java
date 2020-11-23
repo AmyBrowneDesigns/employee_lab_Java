@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import staff.management.Manager;
@@ -19,6 +20,13 @@ public class ManagerTest {
     public void canGetName(){
         assertEquals("Matt", manager.getName());
     }
+
+    @Test
+    public void canChangeName(){
+        manager.setName("Emmi");
+        assertEquals("Emmi", manager.getName());
+    }
+
     @Test
     public void canGetNINumber(){
         assertEquals("MM23112020", manager.getNINumber());
@@ -37,6 +45,11 @@ public class ManagerTest {
     public void canRaiseSalary(){
         manager.raiseSalary(5.00);
         assertEquals(15.00, manager.getSalary(),0.01);
+    }
+
+    @Test
+    public void cantRaiseByNegative(){
+        assertEquals( 10.00,manager.raiseSalary(-1.00), 0.10);
     }
 
     @Test
